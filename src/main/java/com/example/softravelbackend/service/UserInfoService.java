@@ -26,9 +26,10 @@ public class UserInfoService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserInfo userInfo = userInfoRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+        
         return new org.springframework.security.core.userdetails.User(
                 userInfo.getEmail(),
-                "", // No password as we're authenticating with CIN and email
+                String.valueOf(userInfo.getCin()), // Use CIN as password
                 List.of(new SimpleGrantedAuthority("ROLE_" + userInfo.getRole()))
         );
     }
