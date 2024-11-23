@@ -1,6 +1,7 @@
 package com.example.softravelbackend.controller;
 
 import com.example.softravelbackend.model.Liquidation;
+import com.example.softravelbackend.model.LiquidationRequest;
 import com.example.softravelbackend.service.LiquidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
