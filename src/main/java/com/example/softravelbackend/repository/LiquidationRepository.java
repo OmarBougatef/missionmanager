@@ -11,4 +11,6 @@ public interface LiquidationRepository extends JpaRepository<Liquidation, Long> 
     List<Liquidation> findByUser(UserInfo user);
 
     List<Liquidation> findByMission(Mission mission);
+
+    List<Liquidation> findByUser_Manager_Cin(Long managerCin);
 }

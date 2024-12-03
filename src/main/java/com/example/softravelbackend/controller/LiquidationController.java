@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/liquidations")
-public class LiquidationController {
+public class LiquidationController extends AbstractController {
 
     @Autowired
     private LiquidationService liquidationService;
@@ -41,10 +42,25 @@ public class LiquidationController {
         return new ResponseEntity<>(liquidations, HttpStatus.OK);
     }
 
+    @GetMapping("/my")
+    public ResponseEntity<List<Liquidation>> getMyLiquidations() {
+        Long currentUserCin = getCurrentAuthenticatedUserCin();
+        List<Liquidation> liquidations = liquidationService.getLiquidationsForUser(currentUserCin);
+        return new ResponseEntity<>(liquidations, HttpStatus.OK);
+    }
+    
+
     // Endpoint to get all liquidations for a mission
     @GetMapping("/mission/{missionId}")
     public ResponseEntity<List<Liquidation>> getLiquidationsForMission(@PathVariable Long missionId) {
         List<Liquidation> liquidations = liquidationService.getLiquidationsForMission(missionId);
+        return new ResponseEntity<>(liquidations, HttpStatus.OK);
+    }
+
+    // Endpoint to get all liquidations for a manager
+    @GetMapping("/manager/{managerId}")
+    public ResponseEntity<List<Liquidation>> getLiquidationsForManager(@PathVariable Long managerId) {
+        List<Liquidation> liquidations = liquidationService.getLiquidationsForManager(managerId);
         return new ResponseEntity<>(liquidations, HttpStatus.OK);
     }
 }

@@ -12,3 +12,9 @@ VALUES
     (2, 'Tech Conference Berlin', 'Web Development Summit', 'Berlin', '2024-03-15', '2024-03-20', 3000.00, 'TERMINEE', 123456789012345, 123456789012345),
     (3, 'Training Madrid', 'Advanced Java Training', 'Madrid', '2024-04-10', '2024-04-15', 2000.00, 'EN_ATTENTE', 234567890123456, 234567890123456),
     (4, 'Client Meeting Rome', 'Project kickoff meeting', 'Rome', '2024-05-01', '2024-05-03', 1500.00, 'ANNULEE', 345678901234567, 345678901234567);
+
+INSERT INTO liquidation (user_id, mission_id, train_cost, bus_cost, taxi_cost, other_transport_cost, internet_package_cost, sim_card_cost, hotel_cost, total_amount, date)
+VALUES 
+    (234567890123456, 3, 100.00, 50.00, 30.00, 20.00, 10.00, 5.00, 200.00, 415.00, '2024-04-16'),
+    (345678901234567, 4, 120.00, 60.00, 40.00, 25.00, 15.00, 10.00, 250.00, 520.00, '2024-05-04'),
+    (123456789012345, 1, 150.00, 70.00, 50.00, 30.00, 20.00, 15.00, 300.00, 635.00, '2024-02-08');

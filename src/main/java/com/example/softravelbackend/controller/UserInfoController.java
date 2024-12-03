@@ -12,7 +12,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/users")
-public class UserInfoController {
+public class UserInfoController  extends AbstractController {
 
     @Autowired
     private UserInfoService userInfoService;

@@ -43,4 +43,8 @@ public class LiquidationService {
         Mission mission = missionRepository.findById(missionId).orElseThrow(() -> new RuntimeException("Mission not found"));
         return liquidationRepository.findByMission(mission);
     }
+
+    public List<Liquidation> getLiquidationsForManager(Long managerId) {
+        return liquidationRepository.findByUser_Manager_Cin(managerId);
+    }
 }

@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,20 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.softravelbackend.model.Mission;
 import com.example.softravelbackend.model.UserInfo;
-import com.example.softravelbackend.repository.UserInfoRepository;
 import com.example.softravelbackend.service.MissionService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/missions")
-public class MissionController {
+public class MissionController extends AbstractController {
 
     @Autowired
     private MissionService missionService;
-
-    @Autowired
-    private UserInfoRepository userInfoRepository;
-
 
     @GetMapping("/all")
     public List<Mission> getAllMissions() {
@@ -80,13 +72,6 @@ public class MissionController {
     @GetMapping("/manager/{managerCin}")
     public List<Mission> getMissionsByManager(@PathVariable Long managerCin) {
         return missionService.getMissionsByManager(managerCin);
-    }
-
-    private Long getCurrentAuthenticatedUserCin() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        var username = ((User) authentication.getPrincipal()).getUsername();
-        UserInfo userInfo = userInfoRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("User not found"));
-        return userInfo.getCin();
     }
     
 }
