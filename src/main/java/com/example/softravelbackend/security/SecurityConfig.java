@@ -26,6 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**").permitAll() // Allow authentication endpoints
                         .requestMatchers("/api/users/**").hasRole("ADMIN")
+                        .requestMatchers("/api/missions/manager/**").hasAnyRole("ADMIN", "MANAGER")
                         .requestMatchers("/api/missions/**").hasAnyRole("ADMIN", "MANAGER", "COLLABORATEUR")
                         .requestMatchers("/api/liquidations/**").hasAnyRole("ADMIN", "MANAGER", "COLLABORATEUR")
                         .anyRequest().authenticated()
