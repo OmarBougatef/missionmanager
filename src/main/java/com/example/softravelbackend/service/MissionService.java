@@ -43,4 +43,12 @@ public class MissionService {
     public void deleteMission(Long id) {
         missionRepository.deleteById(id);
     }
+
+    public List<Mission> getMissionsByUser(Long cin) {
+        return missionRepository.findByUserInfoCin(cin);
+    }
+
+    public List<Mission> getMissionsByManager(Long managerCin) {
+        return missionRepository.findByUserInfo_Manager_Cin(managerCin);
+    }
 }

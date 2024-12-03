@@ -11,5 +11,9 @@ CREATE TABLE IF NOT EXISTS USER_INFO (
     birth_date DATE NOT NULL,
     nationality VARCHAR(255),
     gender VARCHAR(50),
-    role VARCHAR(50)
+    role VARCHAR(50),
+    manager_id BIGINT,
+    CONSTRAINT fk_manager
+        FOREIGN KEY (manager_id)
+        REFERENCES USER_INFO(cin)
 );

@@ -54,6 +54,10 @@ public class UserInfo {
     @JsonManagedReference
     private Set<Mission> missions = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private UserInfo manager;
+
     // Constructors, getters, and setters
     public UserInfo() {}
 
@@ -130,4 +134,12 @@ public class UserInfo {
     public Set<Mission> getMissions() { return missions; }
 
     public void setMissions(Set<Mission> missions) { this.missions = missions; }
+
+    public UserInfo getManager() {
+        return manager;
+    }
+
+    public void setManager(UserInfo manager) {
+        this.manager = manager;
+    }
 }

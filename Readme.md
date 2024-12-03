@@ -1,5 +1,5 @@
-# table d'association hierarchie (user, user)
-# collabo voit ses missions + ses liquidations + fiche user
+# table d'association hierarchie (user, user) ok
+# collabo voit ses missions + ses liquidations + fiche user 
 # manager voit ses missions + missions des collan + ses liquidations + liq collab + fiche user + ses collaborateurs
 
 # admin voit tout

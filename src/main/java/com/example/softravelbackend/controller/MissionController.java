@@ -57,4 +57,15 @@ public class MissionController {
         missionService.deleteMission(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @GetMapping("/user/{cin}")
+    public List<Mission> getMissionsByUser(@PathVariable Long cin) {
+        return missionService.getMissionsByUser(cin);
+    }
+
+    @GetMapping("/manager/{managerCin}")
+    public List<Mission> getMissionsByManager(@PathVariable Long managerCin) {
+        return missionService.getMissionsByManager(managerCin);
+    }
+    
 }
