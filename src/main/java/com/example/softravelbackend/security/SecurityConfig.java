@@ -29,6 +29,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/missions/manager/**").hasAnyRole("ADMIN", "MANAGER")
                         .requestMatchers("/api/missions/**").hasAnyRole("ADMIN", "MANAGER", "COLLABORATEUR")
                         .requestMatchers("/api/liquidations/**").hasAnyRole("ADMIN", "MANAGER", "COLLABORATEUR")
+                        .requestMatchers("/api/liquidations/manager/**").hasAnyRole("ADMIN", "MANAGER")
                         .anyRequest().authenticated()
                 )
                 .securityContext(securityContext -> securityContext.requireExplicitSave(false))
