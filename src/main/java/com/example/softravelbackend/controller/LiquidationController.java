@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/liquidations")
 public class LiquidationController extends AbstractController {
@@ -47,7 +47,7 @@ public class LiquidationController extends AbstractController {
         Long currentUserCin = getCurrentAuthenticatedUserCin();
         List<Liquidation> liquidations = liquidationService.getLiquidationsForUser(currentUserCin);
         return new ResponseEntity<>(liquidations, HttpStatus.OK);
-    }
+        }
     
 
     // Endpoint to get all liquidations for a mission
