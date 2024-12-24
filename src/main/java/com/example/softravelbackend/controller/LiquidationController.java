@@ -2,6 +2,7 @@ package com.example.softravelbackend.controller;
 
 import com.example.softravelbackend.model.Liquidation;
 import com.example.softravelbackend.model.LiquidationRequest;
+import com.example.softravelbackend.model.Mission;
 import com.example.softravelbackend.service.LiquidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ public class LiquidationController extends AbstractController {
     // Endpoint to create a new liquidation
     @PostMapping("/create")
     public ResponseEntity<Liquidation> createLiquidation(@RequestBody LiquidationRequest request) {
+        // Call the service to create a liquidation with the new parameters
         Liquidation liquidation = liquidationService.createLiquidation(
                 request.getUserId(),
                 request.getMissionId(),
@@ -30,8 +32,12 @@ public class LiquidationController extends AbstractController {
                 request.getOtherTransportCost(),
                 request.getInternetPackageCost(),
                 request.getSimCardCost(),
-                request.getHotelCost()
+                request.getHotelCost(),
+                request.getStatus(),   // Added status
+                request.getRemarks()   // Added remarks
         );
+
+        // Return the created liquidation with a CREATED status
         return new ResponseEntity<>(liquidation, HttpStatus.CREATED);
     }
 
@@ -47,8 +53,39 @@ public class LiquidationController extends AbstractController {
         Long currentUserCin = getCurrentAuthenticatedUserCin();
         List<Liquidation> liquidations = liquidationService.getLiquidationsForUser(currentUserCin);
         return new ResponseEntity<>(liquidations, HttpStatus.OK);
-        }
-    
+    }
+
+    @GetMapping("/all")
+    public List<Liquidation> getAllLiquidation() {
+        return liquidationService.getAllLiquidation();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Liquidation> updateLiquidation(@PathVariable Long id, @RequestBody LiquidationRequest request) {
+        // Call the service to update the liquidation with the new parameters from the request
+        Liquidation updatedLiquidation = liquidationService.updateLiquidation(id, request);
+
+        // Return the updated liquidation with a status of OK
+        return ResponseEntity.ok(updatedLiquidation);
+    }
+
+    @PutMapping("/{id}/validate")
+    public ResponseEntity<Liquidation> validateLiquidation(@PathVariable Long id) {
+        // Call the service to validate the liquidation
+        Liquidation validatedLiquidation = liquidationService.validateLiquidation(id);
+
+        // Return the validated liquidation with a status of OK
+        return ResponseEntity.ok(validatedLiquidation);
+    }
+
+    @PutMapping("/{id}/refuse")
+    public ResponseEntity<Liquidation> refuseLiquidation(@PathVariable Long id) {
+        // Call the service to refuse the liquidation
+        Liquidation refusedLiquidation = liquidationService.refuseLiquidation(id);
+
+        // Return the refused liquidation with a status of OK
+        return ResponseEntity.ok(refusedLiquidation);
+    }
 
     // Endpoint to get all liquidations for a mission
     @GetMapping("/mission/{missionId}")

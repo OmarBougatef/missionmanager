@@ -1,7 +1,6 @@
 package com.example.softravelbackend.model;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -34,10 +33,16 @@ public class Liquidation {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    // New fields added
+    @Enumerated(EnumType.STRING)  // Storing the enum as a string in the database
+    private LiquidationStatus status;
+
+    private String remarks;
+
     public Liquidation() {
     }
 
-    public Liquidation(UserInfo user, Mission mission, double trainCost, double busCost, double taxiCost, double otherTransportCost, double internetPackageCost, double simCardCost, double hotelCost) {
+    public Liquidation(UserInfo user, Mission mission, double trainCost, double busCost, double taxiCost, double otherTransportCost, double internetPackageCost, double simCardCost, double hotelCost, LiquidationStatus status, String remarks) {
         this.user = user;
         this.mission = mission;
         this.trainCost = trainCost;
@@ -49,6 +54,8 @@ public class Liquidation {
         this.hotelCost = hotelCost;
         this.totalAmount = trainCost + busCost + taxiCost + otherTransportCost + internetPackageCost + simCardCost + hotelCost;
         this.date = new Date();
+        this.status = status;
+        this.remarks = remarks;
     }
 
     public Long getId() {
@@ -146,4 +153,22 @@ public class Liquidation {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    // New getters and setters for the new fields
+    public LiquidationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(LiquidationStatus status) {
+        this.status = status;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }
+

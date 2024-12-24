@@ -7,7 +7,7 @@ SELECT * FROM (
 );
 
 INSERT INTO mission (id, title, description, destination, start_date, end_date, budget, status, user_info_cin, user_cin)
-VALUES 
+VALUES
     (1, 'Business Meeting Paris', 'Annual stakeholder meeting', 'Paris', '2024-02-01', '2024-02-07', 2500.00, 'EN_ATTENTE', 12345678, 12345678),
     (2, 'Tech Conference Berlin', 'Web Development Summit', 'Berlin', '2024-03-15', '2024-03-20', 3000.00, 'TERMINEE', 12345678, 12345678),
     (3, 'Training Madrid', 'Advanced Java Training', 'Madrid', '2024-04-10', '2024-04-15', 2000.00, 'EN_ATTENTE', 98765432, 98765432),

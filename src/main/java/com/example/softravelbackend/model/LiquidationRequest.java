@@ -2,96 +2,129 @@ package com.example.softravelbackend.model;
 
 public class LiquidationRequest {
 
-        private Long userId;
-        private Long missionId;
-        private Double trainCost;
-        private Double busCost;
-        private Double taxiCost;
-        private Double otherTransportCost;
-        private Double internetPackageCost;
-        private Double simCardCost;
-        private Double hotelCost;
+    private Long userId;
+    private Long missionId;
+    private Double trainCost;
+    private Double busCost;
+    private Double taxiCost;
+    private Double otherTransportCost;
+    private Double internetPackageCost;
+    private Double simCardCost;
+    private Double hotelCost;
 
-        public LiquidationRequest() {
-        }
+    // New fields
+    private LiquidationStatus status;  // Added status field
+    private String remarks;            // Added remarks field
 
-        public LiquidationRequest(Long userId, Long missionId, Double trainCost, Double busCost, Double taxiCost, Double otherTransportCost, Double internetPackageCost, Double simCardCost, Double hotelCost) {
-            this.userId = userId;
-            this.missionId = missionId;
-            this.trainCost = trainCost;
-            this.busCost = busCost;
-            this.taxiCost = taxiCost;
-            this.otherTransportCost = otherTransportCost;
-            this.internetPackageCost = internetPackageCost;
-            this.simCardCost = simCardCost;
-            this.hotelCost = hotelCost;
-        }
+    // Default constructor
+    public LiquidationRequest() {
+    }
 
-        public Long getUserId() {
-            return userId;
-        }
+    // Constructor with new fields added
+    public LiquidationRequest(Long userId, Long missionId, Double trainCost, Double busCost, Double taxiCost,
+                              Double otherTransportCost, Double internetPackageCost, Double simCardCost,
+                              Double hotelCost, LiquidationStatus status, String remarks) {
+        this.userId = userId;
+        this.missionId = missionId;
+        this.trainCost = trainCost;
+        this.busCost = busCost;
+        this.taxiCost = taxiCost;
+        this.otherTransportCost = otherTransportCost;
+        this.internetPackageCost = internetPackageCost;
+        this.simCardCost = simCardCost;
+        this.hotelCost = hotelCost;
+        this.status = status;   // Initialize the status field
+        this.remarks = remarks; // Initialize the remarks field
+    }
 
-        public void setUserId(Long userId) {
-            this.userId = userId;
-        }
+    // Getters and setters for all fields
+    public Long getUserId() {
+        return userId;
+    }
 
-        public Long getMissionId() {
-            return missionId;
-        }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-        public void setMissionId(Long missionId) {
-            this.missionId = missionId;
-        }
+    public Long getMissionId() {
+        return missionId;
+    }
 
-        public Double getTrainCost() {
-            return trainCost;
-        }
+    public void setMissionId(Long missionId) {
+        this.missionId = missionId;
+    }
 
-        public void setTrainCost(Double trainCost) {
-            this.trainCost = trainCost;
-        }
+    public Double getTrainCost() {
+        return trainCost;
+    }
 
-        public Double getBusCost() {
-            return busCost;
-        }
+    public void setTrainCost(Double trainCost) {
+        this.trainCost = trainCost;
+    }
 
-        public void setBusCost(Double busCost) {
-            this.busCost = busCost;
-        }
+    public Double getBusCost() {
+        return busCost;
+    }
 
-        public Double getTaxiCost() {
-            return taxiCost;
-        }
+    public void setBusCost(Double busCost) {
+        this.busCost = busCost;
+    }
 
-        public void setTaxiCost(Double taxiCost) {
-            this.taxiCost = taxiCost;
-        }
+    public Double getTaxiCost() {
+        return taxiCost;
+    }
 
-        public Double getOtherTransportCost() {
-            return otherTransportCost;
-        }
+    public void setTaxiCost(Double taxiCost) {
+        this.taxiCost = taxiCost;
+    }
 
-        public void setOtherTransportCost(Double otherTransportCost) {
-            this.otherTransportCost = otherTransportCost;
-        }
+    public Double getOtherTransportCost() {
+        return otherTransportCost;
+    }
 
-        public Double getInternetPackageCost() {
-            return internetPackageCost;
-        }
+    public void setOtherTransportCost(Double otherTransportCost) {
+        this.otherTransportCost = otherTransportCost;
+    }
 
-        public void setInternetPackageCost(Double internetPackageCost) {
-            this.internetPackageCost = internetPackageCost;
-        }
+    public Double getInternetPackageCost() {
+        return internetPackageCost;
+    }
 
-        public Double getSimCardCost() {
-            return simCardCost;
-        }
+    public void setInternetPackageCost(Double internetPackageCost) {
+        this.internetPackageCost = internetPackageCost;
+    }
 
-        public void setSimCardCost(Double simCardCost) {
-            this.simCardCost = simCardCost;
-        }
+    public Double getSimCardCost() {
+        return simCardCost;
+    }
 
-        public Double getHotelCost() {
-            return hotelCost;
-        }
+    public void setSimCardCost(Double simCardCost) {
+        this.simCardCost = simCardCost;
+    }
+
+    public Double getHotelCost() {
+        return hotelCost;
+    }
+
+    public void setHotelCost(Double hotelCost) {
+        this.hotelCost = hotelCost;
+    }
+
+    // Getter and setter for the status field
+    public LiquidationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(LiquidationStatus status) {
+        this.status = status;
+    }
+
+    // Getter and setter for the remarks field
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }
